@@ -1,0 +1,25 @@
+name: Sync Fork with Upstream
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Executa todos os dias à meia-noite
+  workflow_dispatch: # Permite rodar manualmente se quiser
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do Repositório
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Adicionar Remote Upstream
+        run: git remote add upstream https://github.com/n8n-io/n8n.git
+
+      - name: Sincronizar com Upstream
+        run: |
+          git fetch upstream
+          git checkout main  # Ou outra branch padrão do repositório original
+          git merge upstream/main
+          git push origin main
