@@ -20,6 +20,6 @@ jobs:
       - name: Sincronizar com Upstream
         run: |
           git fetch upstream
-          git checkout main  # Ou outra branch padrão do repositório original
-          git merge upstream/main
+          git checkout main # Ou outra branch padrão do seu fork
+          git merge upstream/main --ff-only # Adicione --ff-only
           git push origin main
