@@ -15,7 +15,7 @@ jobs:
           fetch-depth: 0
 
       - name: Adicionar Remote Upstream
-        run: git remote add upstream https://github.com/n8n-io/n8n
+        run: git remote add upstream https://github.com/n8n-io/n8n.git
 
       - name: Sincronizar com Upstream
         run: |
